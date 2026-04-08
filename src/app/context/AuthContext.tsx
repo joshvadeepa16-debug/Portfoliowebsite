@@ -23,7 +23,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (token) {
       // Verify token and load user
-      fetch('http://localhost:3001/api/me', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      fetch(`${API_URL}/api/me`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
